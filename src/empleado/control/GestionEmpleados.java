@@ -5,8 +5,8 @@ import java.util.Scanner;
 import util.Color;
 import empleado.dao.*;
 import empleado.errores.codigoError;
-import empleado.errores.passwordIncorrectException;
-import empleado.errores.userIncorrectException;
+import empleado.errores.contraseñaException;
+import empleado.errores.usuarioException;
 import factura.Pedido;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,14 +28,14 @@ public class GestionEmpleados {
         this.empleadoAutenticado = empleado;
     }
 
-    public void login() throws userIncorrectException, passwordIncorrectException {
+    public void login() throws usuarioException, contraseñaException {
         Scanner leerTeclado = new Scanner(System.in);
         boolean esEmpleadoValido = false;
         boolean esPasswordValido = false;
 
         System.out.println(Color.BLUE + "\tBienvenido a la tienda");
-        System.out.println(Color.BLUE + "***************************************" + Color.DEFAULT);
-        System.out.print("Introduce el código de tu usuario: ");
+        System.out.println(Color.GREEN + "***************************************\n" + Color.DEFAULT);
+        System.out.print(Color.EXITO + "Introduce el código de tu usuario: ");
         while (!leerTeclado.hasNextInt()) {
             System.out.println(Color.ERROR + "Debe escribir un valor numérico" + Color.DEFAULT);
             System.out.print("Introduce el código de tu usuario: ");
@@ -58,10 +58,10 @@ public class GestionEmpleados {
         }
 
         if (!esEmpleadoValido) {
-            throw new userIncorrectException("Código incorrecto", codigoError.LOGIN_INCORRECTO);
+            throw new usuarioException("Código incorrecto", codigoError.LOGIN_INCORRECTO);
 
         } else if (!esPasswordValido) {
-            throw new passwordIncorrectException("Contraseña incorrecta", codigoError.CONTRASEÑA_INCORRECTA);
+            throw new contraseñaException("Contraseña incorrecta", codigoError.CONTRASEÑA_INCORRECTA);
 
         }
 
@@ -120,7 +120,7 @@ public class GestionEmpleados {
             String passw = scan.next();
             if (esPasswordCorrecta(empleado, passw)) {
 
-                System.out.println(Color.GREEN+"  Ha salido de la cuenta de " + empleado.getNombre() + "\n"+Color.DEFAULT);
+                System.out.println(Color.GREEN + "  Ha salido de la cuenta de " + empleado.getNombre() + "\n" + Color.DEFAULT);
                 Pedido pedido = new Pedido();
                 pedido.vaciarArray();
                 sigue = false;

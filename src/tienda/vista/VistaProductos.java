@@ -1,11 +1,9 @@
 package tienda.vista;
 
 import empleado.dominio.Empleado;
-import java.util.List;
 import java.util.Scanner;
 import producto.control.GestionProductos;
-import producto.dao.ProductoDAO;
-import producto.dominio.Producto;
+
 import tienda.control.GestionTienda;
 import tienda.control.MenuPrincipal;
 import tienda.control.MenuProductos;

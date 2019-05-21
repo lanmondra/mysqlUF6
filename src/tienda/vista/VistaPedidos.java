@@ -11,13 +11,12 @@ public class VistaPedidos {
 
     public static MenuFactura opcionDesdeMenufactura() {
 
-      
-        System.out.println(BLUE+"------------- MENU PEDIDO ----------------" + Color.DEFAULT);
+        System.out.println(Color.BLUE_BOLD + "\n------------- MENU PEDIDO ----------------" + Color.DEFAULT);
         System.out.println("1.1 ._Añadir un producto a la cesta");
         System.out.println("1.2 ._Visualizar el precio total de la cesta");
         System.out.println("1.3 ._Imprimir factura");
         System.out.println("1.4 ._Terminar pedido");
-        System.out.println(BLUE+"------------------------------------------"+Color.DEFAULT);
+        System.out.println(Color.BLUE_BOLD + "------------------------------------------\n" + Color.DEFAULT);
 
         int opcion = pedirOpcionEnRango(1, 4);
 

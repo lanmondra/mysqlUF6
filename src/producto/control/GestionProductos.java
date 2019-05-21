@@ -1,21 +1,13 @@
 package producto.control;
 
 import conexion.ConexionBD;
-import empleado.dao.EmpleadoDAOImp;
 import empleado.dominio.Empleado;
 import factura.Pedido;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import producto.dao.ProductoDAO;
+
 import producto.dao.ProductoDAOImp;
 import producto.dominio.Producto;
 import tienda.vista.VistaProductos;
@@ -127,7 +119,7 @@ public class GestionProductos {
             }
             if (!codigoYaExistente) {
                 var newProduct = new ProductoDAOImp();
-                newProduct.updateCode(newProductCode, newCod);
+                newProduct.actualizaCodigo(newProductCode, newCod);
                 System.out.println(Color.GREEN + "Cambiado exitosamente" + Color.DEFAULT);
                 cambioCodigoProducto = false;
             } else {
@@ -174,7 +166,7 @@ public class GestionProductos {
         String newName = scan.nextLine();
 
         var newProduct = new ProductoDAOImp();
-        newProduct.updateName(newProductCode, newName);
+        newProduct.actualizaNombre(newProductCode, newName);
         System.out.println(Color.GREEN + "Nombre cambiado exitosamente" + Color.DEFAULT);
 
         //para volver a la pantalla de producto
@@ -224,7 +216,7 @@ public class GestionProductos {
         }
 
         var newProduct = new ProductoDAOImp();
-        newProduct.updatePrice(newProductCode, productPrice);
+        newProduct.actualizaPrecio(newProductCode, productPrice);
 
         System.out.println(Color.GREEN + "Precio cambiado exitosamente" + Color.DEFAULT);
 

@@ -50,10 +50,10 @@ public class Empleado {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return String.format("%d %s %s %s%n",
-                getCodigo(), getNombre(), getApellidos(), getPassword());
-    }
+//    @Override
+//    public String toString() {
+//        return String.format("%d %s %s %s%n",
+//                getCodigo(), getNombre(), getApellidos(), getPassword());
+//    }
 
 }

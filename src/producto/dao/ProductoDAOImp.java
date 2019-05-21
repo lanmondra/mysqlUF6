@@ -1,23 +1,12 @@
 package producto.dao;
 
 import conexion.ConexionBD;
-import conexion.ConexionBD;
-import empleado.dao.EmpleadoDAOImp;
-import empleado.dominio.Empleado;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 import java.sql.*;
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import producto.dominio.Producto;
 
 public class ProductoDAOImp implements ProductoDAO {
@@ -29,7 +18,7 @@ public class ProductoDAOImp implements ProductoDAO {
     //@Override
     public ProductoDAOImp() {
 
-         List<Producto> productList = new ArrayList<Producto>();
+        List<Producto> productList = new ArrayList<Producto>();
         String query = "SELECT * FROM productos";
         Statement statement;
         ResultSet result = null;
@@ -111,7 +100,7 @@ public class ProductoDAOImp implements ProductoDAO {
         this.products = products;
     }
 
-    public void updateCode(int productCode, int productNewCode) {
+    public void actualizaCodigo(int productCode, int productNewCode) {
 
         Producto productos = new Producto();
 
@@ -127,7 +116,7 @@ public class ProductoDAOImp implements ProductoDAO {
         escribirEnBD(productCode, productos);
     }
 
-    public void updateName(int productCode, String nuevoNombre) {
+    public void actualizaNombre(int productCode, String nuevoNombre) {
 
         Producto productos = new Producto();
 
@@ -144,7 +133,7 @@ public class ProductoDAOImp implements ProductoDAO {
     }
 
     //@Override
-    public void updatePrice(int productCode, double productPrice) {
+    public void actualizaPrecio(int productCode, double productPrice) {
         Producto productos = new Producto();
 
         for (int i = 0; i < this.products.size(); i++) {
@@ -181,7 +170,7 @@ public class ProductoDAOImp implements ProductoDAO {
             System.err.println("no se puede conectara a las bases de datos");
         }
 //        finally {
-       
+
         this.products = (new ProductoDAOImp()).leerProducts();
         //  }
     }

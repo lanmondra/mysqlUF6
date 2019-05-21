@@ -2,15 +2,15 @@ package tienda.control;
 
 import empleado.control.GestionEmpleados;
 import empleado.dominio.Empleado;
-import empleado.errores.passwordIncorrectException;
-import empleado.errores.userIncorrectException;
+import empleado.errores.contraseñaException;
+import empleado.errores.usuarioException;
 import factura.Pedido;
-import conexion.ConexionBD;
 import java.util.ArrayList;
 import java.util.List;
 import producto.dominio.Producto;
 import tienda.vista.VistaProductos;
 import tienda.vista.VistaTienda;
+import util.Color;
 
 public class GestionTienda {
 
@@ -26,18 +26,18 @@ public class GestionTienda {
     }
 
     public void iniciar() {
-        
+
         boolean esLoginCorrecto = false;
         while (!esLoginCorrecto) {
             try {
                 gestionaEmpleados.login();
                 esLoginCorrecto = true;
-            } catch (userIncorrectException e) {
+            } catch (usuarioException e) {
                 System.err.println(e.getMessage());
                 System.err.println("Código de error: " + e.getCodigoError());
-            } catch (passwordIncorrectException p) {
+            } catch (contraseñaException p) {
                 System.err.println(p.getMessage());
-                System.err.println("Código de error: " + p.getCodigoError());
+                System.err.println(Color.ANSI_RED + "Código de error: " + p.getCodigoError() + Color.DEFAULT);
 
             }
         }

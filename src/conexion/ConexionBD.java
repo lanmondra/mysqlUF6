@@ -17,7 +17,7 @@ public class ConexionBD {
         PORT = "3306";
         DATABASE = "tienda";
         USER = "root";
-        PASSWORD = "";
+        PASSWORD = "smile";
         URL_PARAM = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         URL = "jdbc:mysql://" + HOST + ":" + PORT + "/" + DATABASE + URL_PARAM;
 
@@ -40,7 +40,7 @@ public class ConexionBD {
 
     private static void cargarDriver() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException ex) {
             System.out.println("No se ha cargado el driver JDBC MySQL");
             System.exit(1);

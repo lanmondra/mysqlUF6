@@ -1,21 +1,13 @@
 package factura;
 
 import conexion.ConexionBD;
-import empleado.control.GestionEmpleados;
 import empleado.dominio.Empleado;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.text.NumberFormat;
-import java.text.ParseException;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
-import producto.control.GestionProductos;
 import producto.dominio.Producto;
-import producto.vista.VistaProducto;
 import java.sql.SQLException;
 import tienda.control.GestionTienda;
 
@@ -28,13 +20,11 @@ public class Pedido {
 
     Empleado empleado;
 
-    
-
     Scanner scan = new Scanner(System.in);
 
     //ArrayList<Producto> newProductList = new ArrayList<Producto>();
     ArrayList<Producto> ProductList = new ArrayList<Producto>();
-   
+
     private static ArrayList<Producto> listaCompletaDeProductosList = new ArrayList<Producto>();
 
     public Pedido(Empleado empleadoLogado) {
@@ -47,10 +37,10 @@ public class Pedido {
 
     public List<Producto> leeProductos() {
 
-       String query = "SELECT * FROM productos";
+        String query = "SELECT * FROM productos";
 
         try (
-                var conexion = ConexionBD.conectar(); var sentencia = conexion.createStatement(); var resultado = sentencia.executeQuery(query);) {
+                 var conexion = ConexionBD.conectar();  var sentencia = conexion.createStatement();  var resultado = sentencia.executeQuery(query);) {
 
             // capturar los resultados
             while (resultado.next()) {
@@ -60,7 +50,6 @@ public class Pedido {
                 var precio = resultado.getDouble("p_precio");
 
                 listaCompletaDeProductosList.add(new Producto(codigo, nombre, descripcion, precio));
-                
 
             }
 
@@ -103,12 +92,12 @@ public class Pedido {
             Pedido();
 
         }
-        
+
         int opcion = pedirOpcion(1, 3);
 
         int inicio = 0;
         while (inicio < opcion) {
-            
+
             boolean sigue = true;
             while (sigue) {
                 int codigoEntrada = 0;
@@ -224,9 +213,9 @@ public class Pedido {
                 aux = aux + this.ProductList.get(i).getPrecio();
 
             }
-            System.out.println(Color.DARK_BLUE + "\n\n------------------------------------------------" + Color.DEFAULT);
+            System.out.println(Color.BLUE + "\n\n------------------------------------------------" + Color.DEFAULT);
             System.out.println("Precio de la cesta : " + aux + " € ");
-            System.out.println(Color.DARK_BLUE + "------------------------------------------------\n\n" + Color.DEFAULT);
+            System.out.println(Color.BLUE + "------------------------------------------------\n\n" + Color.DEFAULT);
             //System.out.println("\t\t" + aux + " €");
 
         } else {
@@ -241,14 +230,14 @@ public class Pedido {
             double aux = 0;
             System.out.println("\n\nFactura simplificada:");
 
-            System.out.println(Color.DARK_BLUE + "----------------------------------------" + Color.DEFAULT);
+            System.out.println(Color.GREEN + "--------------------------------------------------------------------------------" + Color.DEFAULT);
             for (int i = 0; i < ProductList.size(); i++) {
                 System.out.printf("Codigo:\t\t%d%nNombre:\t\t%s%nDescripción:\t%s%nPrecio\t\t%.2f%n%n", this.ProductList.get(i).getCodigo(),
                         this.ProductList.get(i).getNombre(), this.ProductList.get(i).getDescripcion(), this.ProductList.get(i).getPrecio());
 
             }
 
-            System.out.println(Color.DARK_BLUE + "----------------------------------------" + Color.DEFAULT);
+            System.out.println(Color.GREEN + "--------------------------------------------------------------------------------" + Color.DEFAULT);
             for (int i = 0; i < ProductList.size(); i++) {
 
                 aux = aux + this.ProductList.get(i).getPrecio();
@@ -274,8 +263,8 @@ public class Pedido {
         listaCompletaDeProductosList.clear();
 
     }
-    
-     void imprimirProductos() {
+
+    void imprimirProductos() {
         System.out.println(Color.BLUE + "\n************************************************" + Color.DEFAULT);
         for (Producto producto : listaCompletaDeProductosList) {
             System.out.printf("Codigo:\t\t%d%nNombre:\t\t%s%nDescripción:\t%s%nPrecio\t\t%.2f%n%n", producto.getCodigo(),

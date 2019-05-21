@@ -2,31 +2,31 @@
 package empleado.errores;
 
 
-public class passwordIncorrectException extends Exception {
+public class contraseñaException extends Exception {
     
     private int codigoError;
 
     static void passwordIncorrectException() {
     }
 
-    public passwordIncorrectException(String message) {
+    public contraseñaException(String message) {
 
         super(message);
 
     }
-    public passwordIncorrectException(String message,codigoError codigoError ) {
+    public contraseñaException(String message,codigoError codigoError ) {
 
         super(message);
         this.codigoError = codigoError.getCodigoError();
 
     }
 
-    public passwordIncorrectException(String mensaje, Throwable causa) {
+    public contraseñaException(String mensaje, Throwable causa) {
         super(mensaje, causa);
 
     }
 
-    public passwordIncorrectException(String mensaje, Throwable causa, codigoError codigoError) {
+    public contraseñaException(String mensaje, Throwable causa, codigoError codigoError) {
         super(mensaje, causa);
         this.codigoError = codigoError.getCodigoError();
 
